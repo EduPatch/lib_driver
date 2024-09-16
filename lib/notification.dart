@@ -1,5 +1,9 @@
 import "calendar.dart";
 
+abstract class NotificationsContext {
+  Future<List<Notification>> getNotifications();
+}
+
 enum NotificationType { news, calendar, custom }
 
 class Notification {

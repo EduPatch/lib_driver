@@ -1,3 +1,7 @@
+abstract class CalendarContext {
+  Future<List<CalendarEvent>> getCalendarEvents();
+}
+
 class CalendarEvent {
   String id;
   String title;

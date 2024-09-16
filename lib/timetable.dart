@@ -1,3 +1,7 @@
+abstract class TimetableContext {
+  Future<Timetable> getTimetable();
+}
+
 typedef Minutes = int;
 
 class Timetable {

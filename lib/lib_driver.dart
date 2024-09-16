@@ -8,23 +8,19 @@ import "calendar.dart";
 abstract class DriverBase {
   String get driverName;
 
-  Future<Timetable> getTimetable() {
-    return Future.error(
-        Exception("driver '$driverName' doesn't support timetables"));
+  TimetableContext? getTimetableContext() {
+    return null;
   }
 
-  Future<List<Notification>> getNotifications() {
-    return Future.error(
-        Exception("driver '$driverName' doesn't support notifications"));
+  NotificationsContext? getNotificationsContext() {
+    return null;
   }
 
-  Future<List<AttendenceEvent>> getCalendarEvent() {
-    return Future.error(
-        Exception("driver '$driverName' doesn't support attendence"));
+  CalendarContext? getCalendarContext() {
+    return null;
   }
 
-  Future<List<CalendarEvent>> getAttendenceEvents() {
-    return Future.error(
-        Exception("driver '$driverName' doesn't support calendar"));
+  AttendenceContext? getAttendenceContext() {
+    return null;
   }
 }
