@@ -1,5 +1,6 @@
 import "package:lib_driver/lib_driver.dart";
 import "package:lib_driver/timetable.dart";
+import "package:lib_driver/driver_metadata.dart";
 
 class CumTimetableContext extends TimetableContext {
   @override
@@ -10,7 +11,8 @@ class CumTimetableContext extends TimetableContext {
 
 class CumDriver extends DriverBase {
   @override
-  get driverName => "deezdriver";
+  get driverMetadata => DriverMetadata(
+      driverName: "deezdriver", supportedFeatures: [ContextType.timetable]);
 
   @override
   getTimetableContext() {
@@ -21,6 +23,15 @@ class CumDriver extends DriverBase {
 void main() async {
   var driver = CumDriver();
 
+  // print driver metadata
+  print("using driver: ${driver.driverMetadata.driverName}");
+  print("driver features:");
+  driver.driverMetadata.supportedFeatures
+      .forEach((feature) => print("- $feature"));
+
+  print("");
+
+  // here comes the cool part that makes everything more readable and safer:
   var timetableCtx = driver.getTimetableContext();
   if (timetableCtx != null) {
     var tt = await timetableCtx.getTimetable();
@@ -29,6 +40,7 @@ void main() async {
 
   var notifsCtx = driver.getNotificationsContext();
   if (notifsCtx != null) {
+    // because notifs is not a supported feature notifsCtx is null and thus dis not runny
     var notifs = await notifsCtx.getNotifications();
     print(notifs);
   }

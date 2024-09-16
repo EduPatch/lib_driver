@@ -1,12 +1,13 @@
 library lib_driver;
 
+import "driver_metadata.dart";
 import "timetable.dart";
 import "notification.dart";
-import "attendence.dart";
 import "calendar.dart";
+import "attendence.dart";
 
 abstract class DriverBase {
-  String get driverName;
+  DriverMetadata get driverMetadata;
 
   TimetableContext? getTimetableContext() {
     return null;
