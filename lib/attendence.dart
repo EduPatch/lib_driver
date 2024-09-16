@@ -1,1 +1,1 @@
-class Attendence {}
+class AttendenceEvent {}

@@ -1,19 +1,21 @@
-abstract class NotificationLink {}
+import "calendar.dart";
 
-class CalendarLink extends NotificationLink {
-  int eventId;
-  CalendarLink({required this.eventId});
-}
-
-class AttendenceLink extends NotificationLink {
-  int eventId;
-  AttendenceLink({required this.eventId});
-}
+enum NotificationType { news, calendar, custom }
 
 class Notification {
-  String title;
-  String source;
-  NotificationLink link;
+  String id;
+  NotificationType type;
 
-  Notification({required this.title, required this.source, required this.link});
+  Notification({required this.id, required this.type});
+}
+
+class CalendarNotification extends Notification {
+  String eventId;
+  CalendarEvent event;
+
+  CalendarNotification(
+      {required super.id,
+      required super.type,
+      required this.eventId,
+      required this.event});
 }
