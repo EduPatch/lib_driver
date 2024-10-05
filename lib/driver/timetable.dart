@@ -5,18 +5,19 @@ abstract class TimetableContext {
 typedef Minutes = int;
 
 class Timetable {
-  Minutes begin;
-  Minutes length;
+  Minutes beginMinutes;
+  Minutes lengthMinutes;
   List<Lesson> lessons;
 
-  Timetable({required this.begin, required this.length, required this.lessons});
+  Timetable({required this.beginMinutes, required this.lengthMinutes, required this.lessons});
 }
 
 class Lesson {
-  Minutes time;
-  Minutes length;
+  Minutes timeMinutes;
+  Minutes lengthMinutes;
+  int dayIndex;
   String subjectName;
   // TODO add other metadata such as lesson hall, teacher, and subject color info
 
-  Lesson({required this.time, required this.length, required this.subjectName});
+  Lesson({required this.timeMinutes, required this.lengthMinutes, required this.dayIndex, required this.subjectName});
 }

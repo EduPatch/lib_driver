@@ -1,14 +1,8 @@
 import "driver_metadata.dart";
 import "timetable.dart";
-import "notification.dart";
+import "notifications.dart";
 import "calendar.dart";
 import "attendence.dart";
-
-export "driver_metadata.dart";
-export "timetable.dart";
-export "notification.dart";
-export "calendar.dart";
-export "attendence.dart";
 
 abstract class DriverBase {
   DriverMetadata get driverMetadata;

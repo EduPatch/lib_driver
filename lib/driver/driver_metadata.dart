@@ -6,10 +6,10 @@ enum ContextType {
 }
 
 class CustomPage {
-  String title;
+  String pageName;
   String fullUrl;
 
-  CustomPage({required this.title, required this.fullUrl});
+  CustomPage({required this.pageName, required this.fullUrl});
 }
 
 class DriverMetadata {

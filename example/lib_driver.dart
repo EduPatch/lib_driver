@@ -1,27 +1,43 @@
 import "package:lib_driver/lib_driver.dart";
-import "package:lib_driver/timetable.dart";
-import "package:lib_driver/driver_metadata.dart";
 
-class CumTimetableContext extends TimetableContext {
+class DeezTimetableContext extends TimetableContext {
   @override
   getTimetable() {
-    return Future.value(Timetable(begin: 480, length: 540, lessons: []));
+    return Future.value(Timetable(beginMinutes: 480, lengthMinutes: 540, lessons: []));
   }
 }
 
-class CumDriver extends DriverBase {
+class DeezDriver extends DriverBase {
   @override
   get driverMetadata => DriverMetadata(
-      driverName: "deezdriver", supportedFeatures: [ContextType.timetable]);
+      driverName: "DeezPlatform", supportedFeatures: [ContextType.timetable]);
 
   @override
   getTimetableContext() {
-    return CumTimetableContext();
+    return DeezTimetableContext();
+  }
+
+  String oauth2key;
+
+  DeezDriver({required this.oauth2key});
+}
+
+class NutsLoginMethod extends LoginMethodBase {
+  @override
+  get methodMetadata => LoginMethodMetadata(
+      methodName: "NutsLogins",
+      methodType: LoginMethodType.usernameAndPassword);
+
+  @override
+  Future<DriverBase> login() {
+    // return a logged in driver
+    return Future.value(DeezDriver(oauth2key: "some oath2key"));
   }
 }
 
 void main() async {
-  var driver = CumDriver();
+  final loginMethod = NutsLoginMethod();
+  final driver = await loginMethod.login();
 
   // print driver metadata
   print("using driver: ${driver.driverMetadata.driverName}");
@@ -35,7 +51,7 @@ void main() async {
   var timetableCtx = driver.getTimetableContext();
   if (timetableCtx != null) {
     var tt = await timetableCtx.getTimetable();
-    print("${tt.begin} ${tt.length} ${tt.lessons}");
+    print("${tt.beginMinutes} ${tt.lengthMinutes} ${tt.lessons}");
   }
 
   var notifsCtx = driver.getNotificationsContext();
