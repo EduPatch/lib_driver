@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 abstract class TimetableContextBase {
   /// `date` should be a type of DateTime that has the time 00:00, and is on the first day of the week (Monday) you want to get the timetable of.
   ///
@@ -22,6 +20,28 @@ class Timetable {
       required this.lessons});
 }
 
+enum LessonColour {
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange,
+  brown,
+  grey,
+  blueGrey,
+}
+
 class Lesson {
   Minutes timeMinutes;
   Minutes lengthMinutes;
@@ -29,7 +49,7 @@ class Lesson {
   String subjectName;
   String? hallName;
   List<String>? teacherNames;
-  Colors? lessonColour;
+  LessonColour? lessonColour;
 
   Lesson(
       {required this.timeMinutes,
