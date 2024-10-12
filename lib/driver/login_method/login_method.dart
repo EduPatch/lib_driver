@@ -1,16 +1,15 @@
 import "../driver.dart";
 
-enum LoginMethodType { usernameAndPassword }
-
-abstract class LoginMethodBase {
+abstract class _LoginMethodBase {
   LoginMethodMetadata get methodMetadata;
+}
 
-  Future<DriverBase> login();
+abstract class UsernamePasswordMethod extends _LoginMethodBase {
+  Future<DriverBase> login(String username, String password);
 }
 
 class LoginMethodMetadata {
   String methodName;
-  LoginMethodType methodType;
 
-  LoginMethodMetadata({required this.methodName, required this.methodType});
+  LoginMethodMetadata({required this.methodName});
 }
