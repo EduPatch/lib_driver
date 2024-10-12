@@ -13,12 +13,12 @@ class CustomPage {
 }
 
 class DriverMetadata {
-  String driverName;
+  String platformName;
   List<ContextType> supportedFeatures;
   List<CustomPage> customPages;
 
   DriverMetadata(
-      {required this.driverName,
+      {required this.platformName,
       required this.supportedFeatures,
       this.customPages = const []});
 }

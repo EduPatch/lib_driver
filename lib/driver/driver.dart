@@ -7,19 +7,19 @@ import "attendence.dart";
 abstract class DriverBase {
   DriverMetadata get driverMetadata;
 
-  TimetableContext? getTimetableContext() {
+  TimetableContextBase? getTimetableContext() {
     return null;
   }
 
-  NotificationsContext? getNotificationsContext() {
+  NotificationsContextBase? getNotificationsContext() {
     return null;
   }
 
-  CalendarContext? getCalendarContext() {
+  CalendarContextBase? getCalendarContext() {
     return null;
   }
 
-  AttendenceContext? getAttendenceContext() {
+  AttendenceContextBase? getAttendenceContext() {
     return null;
   }
 }

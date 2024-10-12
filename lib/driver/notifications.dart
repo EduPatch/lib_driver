@@ -1,25 +1,25 @@
 import "calendar.dart";
 
-abstract class NotificationsContext {
+abstract class NotificationsContextBase {
   Future<List<Notification>> getNotifications();
 }
 
-enum NotificationType { news, calendar, custom }
-
-class Notification {
+abstract class Notification {
   String id;
-  NotificationType type;
+  DateTime sentDate;
 
-  Notification({required this.id, required this.type});
+  Notification({required this.id, required this.sentDate});
 }
 
 class CalendarNotification extends Notification {
-  String eventId;
   CalendarEvent event;
 
   CalendarNotification(
-      {required super.id,
-      required super.type,
-      required this.eventId,
-      required this.event});
+      {required super.id, required super.sentDate, required this.event});
+}
+
+class NewsNotification extends Notification {
+  // TODO complete this when news is implemented
+
+  NewsNotification({required super.id, required super.sentDate});
 }

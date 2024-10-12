@@ -1,17 +1,18 @@
-abstract class CalendarContext {
+abstract class CalendarContextBase {
   Future<List<CalendarEvent>> getCalendarEvents();
 }
 
 class CalendarEvent {
   String id;
-  String title;
   DateTime begin;
   DateTime end;
-  // TODO prob add like description and other metadata
+  String title;
+  String? description;
 
   CalendarEvent(
       {required this.id,
-      required this.title,
       required this.begin,
-      required this.end});
+      required this.end,
+      required this.title,
+      this.description});
 }
