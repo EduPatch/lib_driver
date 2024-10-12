@@ -1,10 +1,10 @@
 import "../driver.dart";
 
-abstract class _LoginMethodBase {
+abstract class LoginMethodBase {
   LoginMethodMetadata get methodMetadata;
 }
 
-abstract class UsernamePasswordMethod extends _LoginMethodBase {
+abstract class UsernamePasswordMethod extends LoginMethodBase {
   Future<DriverBase> login(String username, String password);
 }
 
